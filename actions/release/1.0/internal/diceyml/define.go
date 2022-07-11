@@ -11,7 +11,6 @@ import (
 
 	dockerref "github.com/docker/distribution/reference"
 	"github.com/pkg/errors"
-	"gopkg.in/yaml.v2"
 )
 
 type EnvType int
@@ -278,6 +277,18 @@ func (d *DiceYaml) InsertImage(images map[string]string) error {
 			}
 		}
 		delete(images, name)
+	}
+	for _, svc := range services {
+		image, _ := svc["image"].(string)
+		if err := ValidImageName(image); err != nil {
+			return err
+		}
+	}
+	for _, job := range jobs {
+		image, _ := job["image"].(string)
+		if err := ValidImageName(image); err != nil {
+			return err
+		}
 	}
 	d.SetJobs(jobs)
 	d.SetServices(services)
