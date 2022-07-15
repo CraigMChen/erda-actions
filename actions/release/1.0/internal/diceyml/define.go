@@ -11,6 +11,7 @@ import (
 
 	dockerref "github.com/docker/distribution/reference"
 	"github.com/pkg/errors"
+	"gopkg.in/yaml.v3"
 )
 
 type EnvType int
