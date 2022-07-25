@@ -1,5 +1,5 @@
 FROM registry.erda.cloud/retag/buildkit:v0.9.2 as buildkit
-FROM registry.erda.cloud/retag/golang:1.16-alpine3.14
+FROM registry.erda.cloud/retag/golang:1.17-alpine3.14
 
 # use aliyun repo
 RUN echo \
